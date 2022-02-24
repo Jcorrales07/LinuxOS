@@ -1,9 +1,6 @@
 package linuxos;
 
-/**
- *
- * @author Corra
- */
+/** @author Joe Corrales */
 public class Admin extends User {
 
     //Constructors

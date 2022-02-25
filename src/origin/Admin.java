@@ -1,4 +1,4 @@
-package linuxos;
+package origin;
 
 /** @author Joe Corrales */
 public class Admin extends User {

@@ -1,4 +1,4 @@
-cd package linuxos;
+package linuxos;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
         setImage();
     }
 
@@ -125,7 +126,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new initFrame().setVisible(true);
             }
         });
     }

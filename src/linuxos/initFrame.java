@@ -9,13 +9,14 @@ public class initFrame extends javax.swing.JFrame {
 
     ImagenFondo ubuntuWallpaper = new ImagenFondo();
     pbThread t1;
-    
+
     public initFrame() {
         this.setContentPane(new ImagenFondo());
         initComponents();
         this.setLocationRelativeTo(null);
         t1 = new pbThread(progressBar);
         t1.start();
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -24,7 +25,7 @@ public class initFrame extends javax.swing.JFrame {
 
         progressBar = new javax.swing.JProgressBar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

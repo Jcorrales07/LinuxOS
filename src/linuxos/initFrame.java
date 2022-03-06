@@ -31,17 +31,17 @@ public class initFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(728, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(246, 246, 246)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 976, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(753, 753, 753))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(1090, Short.MAX_VALUE)
+                .addContainerGap(762, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(198, 198, 198))
+                .addGap(67, 67, 67))
         );
 
         pack();
@@ -116,7 +116,7 @@ public class initFrame extends javax.swing.JFrame {
                 try {
                     sleep(55);
                 } catch (InterruptedException ex) {
-                    ex.printStackTrace(System.out);
+                    ex.printStackTrace();
                 }
             }
         }

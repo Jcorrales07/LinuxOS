@@ -15,11 +15,6 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        //Folders made in my "real" PATH, I have to create the Z:\ and replace it
-        //Anyway it is a progress
-        mkDir("C:\\Users\\Corra\\NetBeansProjects\\LinuxOS\\src\\My Documents");
-        mkDir("C:\\Users\\Corra\\NetBeansProjects\\LinuxOS\\src\\Music");
-        mkDir("C:\\Users\\Corra\\NetBeansProjects\\LinuxOS\\src\\My Images");
     }
     
     //Method to create a file or a directory, maybe i will modify this for the CMD

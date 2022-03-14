@@ -1,12 +1,12 @@
 package linuxos;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 public class initFrame extends javax.swing.JFrame {
-
     ImagenFondo ubuntuWallpaper = new ImagenFondo();
     pbThread t1;
 
@@ -16,7 +16,6 @@ public class initFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         t1 = new pbThread(progressBar);
         t1.start();
-        
     }
     
     @SuppressWarnings("unchecked")
@@ -26,6 +25,9 @@ public class initFrame extends javax.swing.JFrame {
         progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        progressBar.setStringPainted(true);
+        progressBar.setForeground(Color.WHITE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,7 +104,7 @@ public class initFrame extends javax.swing.JFrame {
         public void run() {
             int min = 0;
             int max = 50;
-            
+                        
             progressBar.setMaximum(min);
             progressBar.setMaximum(max);
             progressBar.setValue(0);

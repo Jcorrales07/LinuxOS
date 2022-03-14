@@ -5,11 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Administrator {
     public static ArrayList<User> users = new ArrayList<>();
-    static File root;
-    static RandomAccessFile unitRoot;
+    static File root; // <- Z
+    static RandomAccessFile unitRoot; // <- usuarios
     
     public Administrator() {
         try {
@@ -36,24 +37,32 @@ public class Administrator {
             unitRoot.writeUTF("Admin"); // <- Write the Admin Username
             unitRoot.writeUTF("supersecreto");  // <- Write the Password
             this.createDIRsFor("Admin"); // <- Create Directories for the Admin
-            unitRoot.close();
-            return;
+            return; // <- It ends the process
         }
-        unitRoot.seek(unitRoot.length()); // <- It gets the position of the last register
-        unitRoot.writeUTF(username); // <- Writes the username
-        unitRoot.writeUTF(password); // <- Writes the password
         
-        this.createDIRsFor(username); // <- Create Directories for the 'Username'
-        unitRoot.close();
+        if(searchUser(username) == null) {
+            unitRoot.seek(unitRoot.length()); // <- It gets the position of the last register
+            unitRoot.writeUTF(username); // <- Writes the username
+            unitRoot.writeUTF(password); // <- Writes the password
+
+            this.createDIRsFor(username); // <- Create Directories for the 'Username'
+        } else JOptionPane.showMessageDialog(null, "Existing account!");
     }
     
     private void createDIRsFor(String username) {
+        //             user = 'Z/Admin'
         File user = new File(root+"/"+username); //Creates the 'Username' subfolder in 'Z' <- Root Directory
         user.mkdir();
+        
+        //                  Z/Admin/Documents/
         File doc = new File(user+"/Documents"); //Creates 'Documents' subfolder in 'Username'
         doc.mkdir();
+        
+        //                    Z/Admin/Music
         File music = new File(user+"/Music"); //Creates the 'Music' subfolder in 'Username'
         music.mkdir();
+        
+        //                   Z/Admin/Images
         File imgs = new File(user+"/Images"); //Creates the 'Images' subfolder in 'Username'
         imgs.mkdir();
     }
@@ -63,27 +72,35 @@ public class Administrator {
         String username;
         String password;
         
-        while(unitRoot.getFilePointer() < unitRoot.length()) {
-            username = unitRoot.readUTF();
+        //Mientras el puntero tenga para recorrer dentro el archivo...
+        while(unitRoot.getFilePointer() < unitRoot.length()) { // 10
+            username = unitRoot.readUTF(); //<- leemos datos
             password = unitRoot.readUTF();
             
-            User user = new User(username, password);
-            users.add(user);
+            User user = new User(username, password); //<- creamos objetos tipo User
+            users.add(user); //<- se agregan a la lista
         }
-        unitRoot.close();
         
         for(User user : Administrator.users) {
             System.out.println(user);
         }
     }
     
+    private static void cleanList() {
+        users = new ArrayList<>();
+    }
+    
+    
+    //Funcion que retorna un USUARIO 
     private static User searchUser(String username) throws IOException {
-        fillArray();
-        for(User user : Administrator.users) {
+        fillArray(); //<- Tener la lista llena de lo usuarios registrados
+        for(User user : Administrator.users) { // <- Recorremos la lista
             if(user.getUsername().equalsIgnoreCase(username)) {
-                return user;
+                cleanList(); //<- limpiamos la lista
+                return user; //<- retornamos un usuario si se encuentra
             }
         }
+        cleanList();
         return null;
     }
     
